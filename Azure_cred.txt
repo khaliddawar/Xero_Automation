@@ -1,0 +1,11 @@
+Key1
+ErIaHt0VLSPLUFH9xVSEVpM1u4E8xSRrIZJwEtVVgjkrzAODM5slJQQJ99ALACYeBjFXJ3w3AAALACOGh22r
+
+Key2
+AYfVj0TDPiTsg6AcMi9fusfSaOd3HokfGCDMtQesrXatbLRBXZ5mJQQJ99ALACYeBjFXJ3w3AAALACOG03ko
+
+Endpoint
+https://xero-doc-intelligence.cognitiveservices.azure.com/
+
+Location/Region
+eastus

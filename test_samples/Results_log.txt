@@ -1,0 +1,106 @@
+(venv) PS C:\Users\khali\OneDrive\Desktop\Projects\Xero> python test_xero_client.py
+
+Testing Xero Authentication...
+INFO:integration.xero.xero_client:
+Please go to this URL and authorize the application:
+https://login.xero.com/identity/connect/authorize?response_type=code&client_id=BCB7EE00E1894B1ABBC52AA949CC4A9A&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fcallback&scope=openid+profile+email+accounting.transactions+accounting.contacts+accounting.settings+offline_access&state=123
+
+After authorizing, paste the full callback URL here: http://localhost:8000/callback?code=0Fd-DntBxjcgbPfTY6gsYiaqMJJo7JYBYruU9md6p-U&scope=openid%20profile%20email%20accounting.transactions%20accounting.contacts%20accounting.settings%20offline_access&state=123&session_state=wJfaY4QCWbazibVkgzg-AHxZQdlxTjOL8BiuWd5S4-Y.xkQTdRTjOEdrDd0Y4iJp0w
+INFO:integration.xero.xero_client:✓ Successfully authenticated with Xero
+
+Testing Contact Management...
+INFO:integration.xero.xero_client:Creating new contact: Adhwaa Al-أضواء - Hedaya الهداية
+INFO:integration.xero.xero_client:✓ Created new contact: Adhwaa Al-أضواء - Hedaya الهداية
+
+Testing Invoice Creation...
+INFO:integration.xero.xero_client:✓ Found existing contact: Adhwaa Al-أضواء - Hedaya الهداية
+INFO:integration.xero.xero_client:
+Creating Xero invoice...
+INFO:integration.xero.xero_client:{
+  "Type": "ACCPAY",
+  "Contact": {
+    "ContactID": "0c74a1f9-6d4a-4aeb-93b8-b07b5958609a"
+  },
+  "Date": "2024-12-09",
+  "DueDate": "2024-12-30",
+  "InvoiceNumber": "INV-24-25-3350",
+  "Reference": "INV-24-25-3350",
+  "Status": "DRAFT",
+  "LineAmountTypes": "Exclusive",
+  "SubTotal": 1000.0,
+  "TotalTax": 150.0,
+  "Total": 1150.0,
+  "LineItems": [
+    {
+      "Description": "Administration Fee",
+      "Quantity": 1.0,
+      "UnitAmount": 1000.0,
+      "AccountCode": "200",
+      "TaxType": "INPUT2"
+    }
+  ]
+}
+ERROR:integration.xero.xero_client:Error creating invoice: Failed to create invoice: {
+  "ErrorNumber": 10,
+  "Type": "ValidationException",
+  "Message": "A validation exception occurred",
+  "Elements": [
+    {
+      "Type": "ACCPAY",
+      "InvoiceID": "00000000-0000-0000-0000-000000000000",
+      "InvoiceNumber": "INV-24-25-3350",
+      "Reference": "INV-24-25-3350",
+      "Payments": [],
+      "CreditNotes": [],
+      "Prepayments": [],
+      "Overpayments": [],
+      "IsDiscounted": false,
+      "InvoiceAddresses": [],
+      "HasErrors": true,
+      "InvoicePaymentServices": [],
+      "Contact": {
+        "ContactID": "0c74a1f9-6d4a-4aeb-93b8-b07b5958609a",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false,
+        "ValidationErrors": []
+      },
+      "DateString": "2024-12-09T00:00:00",
+      "Date": "\/Date(1733702400000+0000)\/",
+      "DueDateString": "2024-12-30T00:00:00",
+      "DueDate": "\/Date(1735516800000+0000)\/",
+      "Status": "DRAFT",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [
+        {
+          "Description": "Administration Fee",
+          "UnitAmount": 1000.00,
+          "TaxType": "INPUT2",
+          "TaxAmount": 0.00,
+          "LineAmount": 1000.00,
+          "AccountCode": "200",
+          "Tracking": [],
+          "Quantity": 1.0000,
+          "AccountID": "affa9dc5-f0a5-4146-b7af-04f9ce4f871c",
+          "ValidationErrors": []
+        }
+      ],
+      "SubTotal": 1000.00,
+      "TotalTax": 0.00,
+      "Total": 1000.00,
+      "CurrencyCode": "BHD",
+      "ValidationErrors": [
+        {
+          "Message": "The TaxType code INPUT2 does not exist or cannot be used for this type of transaction."
+        },
+        {
+          "Message": "The TaxType code 'INPUT2' cannot be used with account code '200'."
+        }
+      ]
+    }
+  ]
+}
+
+✗ Test failed: Invoice creation failed
